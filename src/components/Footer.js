@@ -1,154 +1,156 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import {
-  FaGithub,
   FaLinkedin,
-  FaInstagram,
   FaTwitter,
-  FaFacebook,
+  FaGithub,
+  FaFacebook
 } from 'react-icons/fa';
 
-const socialLinks = [
-  {
-    name: 'GitHub',
-    icon: FaGithub,
-    url: 'https://github.com',
-  },
-  {
-    name: 'LinkedIn',
-    icon: FaLinkedin,
-    url: 'https://linkedin.com',
-  },
-  {
-    name: 'Instagram',
-    icon: FaInstagram,
-    url: 'https://instagram.com',
-  },
-  {
-    name: 'X (Twitter)',
-    icon: FaTwitter,
-    url: 'https://x.com',
-  },
-  {
-    name: 'Facebook',
-    icon: FaFacebook,
-    url: 'https://facebook.com',
-  },
-];
-
-const legalLinks = [
-  {
-    name: 'Privacy Policy',
-    path: '/privacy-policy',
-  },
-  {
-    name: 'Terms of Service',
-    path: '/terms-of-service',
-  },
-  {
-    name: 'Cookie Policy',
-    path: '/cookie-policy',
-  },
-  {
-    name: 'GDPR Compliance',
-    path: '/gdpr',
-  },
-  {
-    name: 'Data Protection',
-    path: '/data-protection',
-  },
-  {
-    name: 'Impressum',
-    path: '/impressum',
-  },
-  {
-    name: 'Accessibility Statement',
-    path: '/accessibility',
-  },
-];
-
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const { t } = useTranslation();
+  const [email, setEmail] = useState('');
+  const [subscriptionStatus, setSubscriptionStatus] = useState('');
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    // Add newsletter subscription logic here
+    setSubscriptionStatus('success');
+    setEmail('');
+  };
+
+  const socialLinks = [
+    { icon: <FaLinkedin className="w-6 h-6" />, href: '#', name: 'linkedin' },
+    { icon: <FaTwitter className="w-6 h-6" />, href: '#', name: 'twitter' },
+    { icon: <FaGithub className="w-6 h-6" />, href: '#', name: 'github' },
+    { icon: <FaFacebook className="w-6 h-6" />, href: '#', name: 'facebook' }
+  ];
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      <div className="container-custom py-12">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
-          {/* Company Info */}
+    <footer className="bg-gray-900 text-white">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Company Links */}
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-white">AI Organization</h3>
-            <p className="text-gray-400 mb-4">
-              Empowering the future through autonomous AI solutions.
-            </p>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.company.title')}</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/about" className="hover:text-violet-400 transition-colors">
+                  {t('footer.company.about')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="hover:text-violet-400 transition-colors">
+                  {t('footer.company.services')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-violet-400 transition-colors">
+                  {t('footer.company.contact')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/careers" className="hover:text-violet-400 transition-colors">
+                  {t('footer.company.careers')}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.resources.title')}</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/blog" className="hover:text-violet-400 transition-colors">
+                  {t('footer.resources.blog')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/docs" className="hover:text-violet-400 transition-colors">
+                  {t('footer.resources.documentation')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/support" className="hover:text-violet-400 transition-colors">
+                  {t('footer.resources.support')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/privacy" className="hover:text-violet-400 transition-colors">
+                  {t('footer.resources.privacy')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms" className="hover:text-violet-400 transition-colors">
+                  {t('footer.resources.terms')}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Social Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.social.title')}</h3>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.name}
-                  href={social.url}
+                  href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="text-gray-400 hover:text-violet-400 transition-colors"
+                  whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  className="text-gray-400 hover:text-white transition-colors"
-                  aria-label={social.name}
+                  title={t(`footer.social.${social.name}`)}
                 >
-                  <social.icon className="h-6 w-6" />
+                  {social.icon}
                 </motion.a>
               ))}
             </div>
           </div>
 
-          {/* Legal Links */}
+          {/* Newsletter */}
           <div>
-            <h3 className="text-xl font-semibold mb-4 text-white">Legal</h3>
-            <ul className="space-y-2">
-              {legalLinks.slice(0, 4).map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Additional Legal Links */}
-          <div>
-            <h3 className="text-xl font-semibold mb-4 text-white">Compliance</h3>
-            <ul className="space-y-2">
-              {legalLinks.slice(4).map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.newsletter.title')}</h3>
+            <p className="text-gray-400 mb-4">{t('footer.newsletter.description')}</p>
+            <form onSubmit={handleSubscribe} className="space-y-4">
+              <div>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={t('footer.newsletter.placeholder')}
+                  className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-violet-500 focus:border-transparent"
+                  required
+                />
+              </div>
+              <motion.button
+                type="submit"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full px-6 py-2 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition-colors"
+              >
+                {t('footer.newsletter.button')}
+              </motion.button>
+              {subscriptionStatus === 'success' && (
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-green-400 text-sm"
+                >
+                  {t('footer.newsletter.success')}
+                </motion.p>
+              )}
+            </form>
           </div>
         </div>
 
-        {/* EU Compliance Notice */}
-        <div className="border-t border-gray-800 pt-8 mt-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-            <div className="text-sm text-gray-400">
-              <p>
-                This website complies with EU regulations including GDPR, ePrivacy Directive, and
-                Cookie Law. We respect your privacy and protect your personal data.
-              </p>
-            </div>
-            <div className="text-sm text-gray-400 md:text-right">
-              <p>© {currentYear} AI Organization. All rights reserved.</p>
-              <p>Registered in EU | VAT ID: XX XXX XXX</p>
-            </div>
-          </div>
+        {/* Copyright */}
+        <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
+          <p>{t('footer.copyright')}</p>
         </div>
       </div>
     </footer>

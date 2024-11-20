@@ -1,217 +1,172 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  FaEnvelope, 
-  FaPhone, 
-  FaMapMarkerAlt, 
-  FaLinkedin, 
-  FaTwitter, 
-  FaGithub 
-} from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
+import {
+  EnvelopeIcon,
+  PhoneIcon,
+  MapPinIcon,
+  ClockIcon
+} from '@heroicons/react/24/outline';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const { t } = useTranslation();
+  const [formStatus, setFormStatus] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+    setFormStatus('success');
+    // Add your form submission logic here
   };
 
   const contactInfo = [
-    {
-      icon: <FaEnvelope />,
-      title: "Email",
-      info: "contact@aiorganization.com",
-      gradient: "from-blue-500 to-cyan-500"
-    },
-    {
-      icon: <FaPhone />,
-      title: "Phone",
-      info: "+1 (555) 123-4567",
-      gradient: "from-purple-500 to-pink-500"
-    },
-    {
-      icon: <FaMapMarkerAlt />,
-      title: "Location",
-      info: "Silicon Valley, CA",
-      gradient: "from-green-500 to-emerald-500"
-    }
+    { icon: <MapPinIcon className="h-6 w-6" />, key: 'address' },
+    { icon: <EnvelopeIcon className="h-6 w-6" />, key: 'email' },
+    { icon: <PhoneIcon className="h-6 w-6" />, key: 'phone' },
+    { icon: <ClockIcon className="h-6 w-6" />, key: 'hours' }
   ];
-
-  const socialLinks = [
-    { icon: <FaLinkedin />, url: "#", label: "LinkedIn" },
-    { icon: <FaTwitter />, url: "#", label: "Twitter" },
-    { icon: <FaGithub />, url: "#", label: "GitHub" }
-  ];
-
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
-  };
-
-  const inputClasses = "w-full px-4 py-3 rounded-lg bg-white border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300";
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 pt-24 pb-16">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <motion.div 
-        className="container mx-auto px-4 mb-16 text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <motion.h1 
-          className="text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
-          {...fadeInUp}
-        >
-          Get in Touch
-        </motion.h1>
-        <motion.p 
-          className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
-          {...fadeInUp}
-          transition={{ delay: 0.2 }}
-        >
-          Have questions about our AI solutions? We're here to help and ready to explore how we can transform your organization.
-        </motion.p>
-      </motion.div>
-
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-16">
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
+      <div className="relative pt-20 pb-32 flex content-center items-center justify-center min-h-[40vh] bg-gradient-to-r from-violet-600 to-purple-600">
+        <div className="container mx-auto px-4">
+          <motion.div 
+            className="text-center text-white"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <motion.div whileHover={{ scale: 1.01 }}>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className={inputClasses}
-                  required
-                />
-              </motion.div>
-              
-              <motion.div whileHover={{ scale: 1.01 }}>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className={inputClasses}
-                  required
-                />
-              </motion.div>
-              
-              <motion.div whileHover={{ scale: 1.01 }}>
-                <input
-                  type="text"
-                  name="subject"
-                  placeholder="Subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  className={inputClasses}
-                  required
-                />
-              </motion.div>
-              
-              <motion.div whileHover={{ scale: 1.01 }}>
-                <textarea
-                  name="message"
-                  placeholder="Your Message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows="6"
-                  className={inputClasses}
-                  required
-                />
-              </motion.div>
-
-              <motion.button
-                type="submit"
-                className="w-full px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-lg text-lg font-semibold shadow-lg hover:shadow-xl transition-shadow relative group overflow-hidden"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className="relative z-10">Send Message</span>
-                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-              </motion.button>
-            </form>
-          </motion.div>
-
-          {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.6 }}
-            className="space-y-8"
-          >
-            {/* Contact Cards */}
-            {contactInfo.map((item, index) => (
-              <motion.div
-                key={item.title}
-                className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow group relative overflow-hidden"
-                whileHover={{ scale: 1.02 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * index }}
-              >
-                {/* Gradient Background Effect */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${item.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
-                
-                <div className="relative z-10 flex items-center">
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    className="text-3xl text-primary mr-4"
-                  >
-                    {item.icon}
-                  </motion.div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-800">{item.title}</h3>
-                    <p className="text-gray-600">{item.info}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-
-            {/* Social Links */}
-            <div className="pt-8">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Connect With Us</h3>
-              <div className="flex space-x-4">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={social.label}
-                    href={social.url}
-                    className="text-2xl text-gray-600 hover:text-primary transition-colors"
-                    whileHover={{ scale: 1.2, rotate: 5 }}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8 + (0.1 * index) }}
-                  >
-                    {social.icon}
-                  </motion.a>
-                ))}
-              </div>
-            </div>
+            <h1 className="text-5xl font-bold mb-4">{t('contact.title')}</h1>
+            <p className="text-xl">{t('contact.description')}</p>
           </motion.div>
         </div>
       </div>
+
+      {/* Contact Form Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap">
+            {/* Contact Information */}
+            <motion.div 
+              className="w-full lg:w-4/12 px-4 mb-8 lg:mb-0"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="bg-white rounded-lg shadow-lg p-8">
+                <h2 className="text-2xl font-bold mb-6">{t('contact.info.title')}</h2>
+                <div className="space-y-6">
+                  {contactInfo.map((item) => (
+                    <div key={item.key} className="flex items-start">
+                      <div className="text-violet-500 mr-4">
+                        {item.icon}
+                      </div>
+                      <div>
+                        <h3 className="font-semibold mb-1">{t(`contact.info.${item.key}`)}</h3>
+                        <p className="text-gray-600">
+                          {/* Add your contact information here */}
+                          {item.key === 'email' && 'info@example.com'}
+                          {item.key === 'phone' && '+1 (123) 456-7890'}
+                          {item.key === 'address' && '123 AI Street, Tech City, 12345'}
+                          {item.key === 'hours' && 'Mon-Fri: 9:00 AM - 5:00 PM'}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Contact Form */}
+            <motion.div 
+              className="w-full lg:w-8/12 px-4"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="bg-white rounded-lg shadow-lg p-8">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        {t('contact.form.name')}
+                      </label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-violet-500 focus:border-violet-500"
+                        placeholder={t('contact.form.placeholders.name')}
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        {t('contact.form.email')}
+                      </label>
+                      <input
+                        type="email"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-violet-500 focus:border-violet-500"
+                        placeholder={t('contact.form.placeholders.email')}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        {t('contact.form.phone')}
+                      </label>
+                      <input
+                        type="tel"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-violet-500 focus:border-violet-500"
+                        placeholder={t('contact.form.placeholders.phone')}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        {t('contact.form.company')}
+                      </label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-violet-500 focus:border-violet-500"
+                        placeholder={t('contact.form.placeholders.company')}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      {t('contact.form.message')}
+                    </label>
+                    <textarea
+                      rows="4"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-violet-500 focus:border-violet-500"
+                      placeholder={t('contact.form.placeholders.message')}
+                      required
+                    ></textarea>
+                  </div>
+                  <motion.button
+                    type="submit"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full bg-gradient-to-r from-violet-500 to-purple-500 text-white font-bold py-3 px-8 rounded-lg hover:shadow-lg transition-all duration-200"
+                  >
+                    {t('contact.form.submit')}
+                  </motion.button>
+
+                  {formStatus === 'success' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="mt-4 p-4 bg-green-100 text-green-700 rounded-lg"
+                    >
+                      {t('contact.form.success')}
+                    </motion.div>
+                  )}
+                </form>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
