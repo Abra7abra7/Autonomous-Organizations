@@ -1,0 +1,173 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "language": "Language"
+  },
+  "footer": {
+    "company": {
+      "title": "Company",
+      "about": "About Us",
+      "services": "Services",
+      "contact": "Contact Us",
+      "careers": "Careers"
+    },
+    "resources": {
+      "title": "Resources",
+      "blog": "Blog",
+      "documentation": "Documentation",
+      "support": "Support",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "social": {
+      "title": "Connect With Us",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "facebook": "Facebook"
+    },
+    "newsletter": {
+      "title": "Stay Updated",
+      "description": "Subscribe to our newsletter for the latest updates",
+      "placeholder": "Enter your email",
+      "button": "Subscribe",
+      "success": "Thank you for subscribing!",
+      "error": "Subscription failed. Please try again."
+    },
+    "copyright": " 2024 AI Organization. All rights reserved."
+  },
+  "home": {
+    "hero": {
+      "title": "Revolutionize Your Organization with AI",
+      "subtitle": "Empower your business with intelligent automation and data-driven insights",
+      "cta": "Discover More"
+    },
+    "features": {
+      "title": "Why Choose Us",
+      "subtitle": "Transform your organization with cutting-edge AI solutions",
+      "items": {
+        "automation": {
+          "title": "Smart Automation",
+          "description": "Streamline workflows and reduce manual tasks with AI-powered automation"
+        },
+        "analytics": {
+          "title": "Advanced Analytics",
+          "description": "Make data-driven decisions with real-time insights and predictive analytics"
+        },
+        "integration": {
+          "title": "Seamless Integration",
+          "description": "Easily integrate with your existing tools and workflows"
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to Transform Your Organization?",
+      "description": "Join the future of autonomous organizations today",
+      "button": "Get Started"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Our Mission & Vision",
+    "description": "Leading the way in AI-driven organizational transformation",
+    "mission": {
+      "title": "Our Mission",
+      "description": "To revolutionize organizational management through cutting-edge AI technology"
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "Creating a future where organizations operate seamlessly with AI assistance"
+    },
+    "values": {
+      "title": "Our Values",
+      "items": {
+        "innovation": {
+          "title": "Innovation",
+          "description": "Constantly pushing the boundaries of what's possible"
+        },
+        "reliability": {
+          "title": "Reliability",
+          "description": "Delivering consistent and dependable solutions"
+        },
+        "transparency": {
+          "title": "Transparency",
+          "description": "Open and honest communication in everything we do"
+        }
+      }
+    },
+    "team": {
+      "title": "Our Team",
+      "description": "Meet the experts behind our success"
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive Solutions for Modern Organizations",
+    "description": "Discover our range of AI-powered services",
+    "categories": {
+      "automation": {
+        "title": "Process Automation",
+        "description": "Streamline your operations with intelligent automation",
+        "features": [
+          "Workflow Optimization",
+          "Task Automation",
+          "Performance Monitoring"
+        ]
+      },
+      "analytics": {
+        "title": "AI Analytics",
+        "description": "Make data-driven decisions with advanced analytics",
+        "features": [
+          "Predictive Analysis",
+          "Real-time Insights",
+          "Performance Metrics"
+        ]
+      },
+      "management": {
+        "title": "Resource Management",
+        "description": "Optimize resource allocation with AI assistance",
+        "features": [
+          "Smart Scheduling",
+          "Resource Optimization",
+          "Cost Management"
+        ]
+      }
+    },
+    "cta": "Get Started"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Get in touch with our team",
+    "info": {
+      "title": "Contact Information",
+      "address": "Address",
+      "email": "Email",
+      "phone": "Phone",
+      "hours": "Business Hours"
+    },
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "phone": "Phone Number",
+      "company": "Company Name",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "success": "Thank you for your message. We'll get back to you soon!",
+      "placeholders": {
+        "name": "Enter your name",
+        "email": "Enter your email",
+        "phone": "Enter your phone number",
+        "company": "Enter your company name",
+        "message": "Write your message here"
+      }
+    }
+  },
+  "language": {
+    "select": "Select Language",
+    "en": "English",
+    "sk": "Slovak"
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "nav": {
+    "home": "Domov",
+    "about": "O nás",
+    "services": "Služby",
+    "contact": "Kontakt",
+    "language": "Jazyk"
+  },
+  "home": {
+    "hero": {
+      "title": "Revolučné riešenie pre vašu organizáciu s AI",
+      "subtitle": "Posilnite svoje podnikanie inteligentnou automatizáciou a analýzou dát",
+      "cta": "Zistiť viac"
+    },
+    "features": {
+      "title": "Prečo si vybrať nás",
+      "subtitle": "Transformujte svoju organizáciu pomocou najmodernejších AI riešení",
+      "items": {
+        "automation": {
+          "title": "Inteligentná automatizácia",
+          "description": "Zefektívnite pracovné postupy a znížte manuálne úlohy pomocou AI"
+        },
+        "analytics": {
+          "title": "Pokročilá analytika",
+          "description": "Robte rozhodnutia na základe dát s prediktívnou analytikou v reálnom čase"
+        },
+        "integration": {
+          "title": "Bezproblémová integrácia",
+          "description": "Jednoducho sa integrujte s vašimi existujúcimi nástrojmi"
+        }
+      }
+    },
+    "cta": {
+      "title": "Pripravení transformovať vašu organizáciu?",
+      "description": "Pripojte sa k budúcnosti autonómnych organizácií už dnes",
+      "button": "Začať"
+    }
+  },
+  "about": {
+    "title": "O nás",
+    "subtitle": "Naša misia a vízia",
+    "description": "Vedieme cestu v transformácii organizácií pomocou AI",
+    "mission": {
+      "title": "Naša misia",
+      "description": "Revolučne meniť organizačný manažment pomocou najmodernejšej AI technológie"
+    },
+    "vision": {
+      "title": "Naša vízia",
+      "description": "Vytváranie budúcnosti, kde organizácie fungujú plynulo s pomocou AI"
+    },
+    "values": {
+      "title": "Naše hodnoty",
+      "items": {
+        "innovation": {
+          "title": "Inovácia",
+          "description": "Neustále posúvame hranice možného"
+        },
+        "reliability": {
+          "title": "Spoľahlivosť",
+          "description": "Poskytujeme konzistentné a spoľahlivé riešenia"
+        },
+        "transparency": {
+          "title": "Transparentnosť",
+          "description": "Otvorená a úprimná komunikácia vo všetkom, čo robíme"
+        }
+      }
+    },
+    "team": {
+      "title": "Náš tím",
+      "description": "Spoznajte expertov za naším úspechom"
+    }
+  },
+  "services": {
+    "title": "Naše služby",
+    "subtitle": "Komplexné riešenia pre moderné organizácie",
+    "description": "Objavte našu škálu služieb poháňaných AI",
+    "categories": {
+      "automation": {
+        "title": "Automatizácia procesov",
+        "description": "Zefektívnite svoje operácie pomocou inteligentnej automatizácie",
+        "features": [
+          "Optimalizácia pracovných postupov",
+          "Automatizácia úloh",
+          "Monitorovanie výkonu"
+        ]
+      },
+      "analytics": {
+        "title": "AI Analytika",
+        "description": "Robte rozhodnutia založené na dátach s pokročilou analytikou",
+        "features": [
+          "Prediktívna analýza",
+          "Analýzy v reálnom čase",
+          "Výkonnostné metriky"
+        ]
+      },
+      "management": {
+        "title": "Správa zdrojov",
+        "description": "Optimalizujte alokáciu zdrojov s pomocou AI",
+        "features": [
+          "Inteligentné plánovanie",
+          "Optimalizácia zdrojov",
+          "Riadenie nákladov"
+        ]
+      }
+    },
+    "cta": "Začnite teraz"
+  },
+  "contact": {
+    "title": "Kontaktujte nás",
+    "description": "Spojte sa s naším tímom",
+    "info": {
+      "title": "Kontaktné informácie",
+      "address": "Adresa",
+      "email": "Email",
+      "phone": "Telefón",
+      "hours": "Pracovné hodiny"
+    },
+    "form": {
+      "name": "Vaše meno",
+      "email": "Váš email",
+      "phone": "Telefónne číslo",
+      "company": "Názov spoločnosti",
+      "message": "Vaša správa",
+      "submit": "Odoslať správu",
+      "success": "Ďakujeme za vašu správu. Čoskoro sa vám ozveme!",
+      "placeholders": {
+        "name": "Zadajte vaše meno",
+        "email": "Zadajte váš email",
+        "phone": "Zadajte vaše telefónne číslo",
+        "company": "Zadajte názov vašej spoločnosti",
+        "message": "Napíšte vašu správu"
+      }
+    }
+  },
+  "language": {
+    "select": "Vyberte jazyk",
+    "en": "Angličtina",
+    "sk": "Slovenčina"
+  },
+  "footer": {
+    "company": {
+      "title": "Spoločnosť",
+      "about": "O nás",
+      "services": "Služby",
+      "contact": "Kontaktujte nás",
+      "careers": "Kariéra"
+    },
+    "resources": {
+      "title": "Zdroje",
+      "blog": "Blog",
+      "documentation": "Dokumentácia",
+      "support": "Podpora",
+      "privacy": "Ochrana súkromia",
+      "terms": "Podmienky služby"
+    },
+    "social": {
+      "title": "Spojte sa s nami",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "facebook": "Facebook"
+    },
+    "newsletter": {
+      "title": "Zostaňte informovaní",
+      "description": "Prihláste sa na odber noviniek",
+      "placeholder": "Zadajte váš email",
+      "button": "Prihlásiť sa",
+      "success": "Ďakujeme za prihlásenie!",
+      "error": "Prihlásenie zlyhalo. Prosím, skúste to znova."
+    },
+    "copyright": " 2024 AI Organization. Všetky práva vyhradené."
+  }
+}

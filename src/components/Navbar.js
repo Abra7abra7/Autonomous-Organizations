@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
+import { Menu, Transition } from '@headlessui/react';
+import { useTranslation } from 'react-i18next';
+import '../i18n';
 
 const navItems = [
-  { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
-  { name: 'Services', path: '/services' },
-  { name: 'Contact', path: '/contact' },
+  { name: 'nav.home', path: '/' },
+  { name: 'nav.about', path: '/about' },
+  { name: 'nav.services', path: '/services' },
+  { name: 'nav.contact', path: '/contact' },
+];
+
+const languages = [
+  { code: 'en', name: 'language.en', flag: '🇬🇧' },
+  { code: 'sk', name: 'language.sk', flag: '🇸🇰' },
 ];
 
 const menuVariants = {
@@ -50,6 +58,7 @@ const Navbar = () => {
   const [visible, setVisible] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { t, i18n } = useTranslation();
 
   // Get page-specific styles
   const getPageStyles = () => {
@@ -94,6 +103,11 @@ const Navbar = () => {
   };
 
   const pageStyles = getPageStyles();
+
+  // Language change handler
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
 
   // Handle scroll events for navbar visibility and transparency
   useEffect(() => {
@@ -169,7 +183,7 @@ const Navbar = () => {
                           : scrolled ? 'text-gray-700 ' + pageStyles.hover : 'text-gray-800 ' + pageStyles.hover
                         }`}
                     >
-                      <span className="relative z-10">{item.name}</span>
+                      <span className="relative z-10">{t(item.name)}</span>
                       <div className={`absolute inset-0 bg-gradient-to-r ${pageStyles.mobileGradient} rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300`} />
                       
                       {location.pathname === item.path && (
@@ -182,6 +196,49 @@ const Navbar = () => {
                     </motion.div>
                   </Link>
                 ))}
+
+                {/* Language Selector */}
+                <Menu as="div" className="relative">
+                  <Menu.Button
+                    className={`flex items-center px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300
+                      ${scrolled ? 'text-gray-700 hover:text-gray-900' : 'text-gray-800 hover:text-gray-900'}
+                    `}
+                  >
+                    <GlobeAltIcon className="w-5 h-5 mr-1" />
+                    <span>{languages.find(lang => lang.code === i18n.language)?.flag}</span>
+                  </Menu.Button>
+                  <Transition
+                    as={React.Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <div className="py-1">
+                        {languages.map((lang) => (
+                          <Menu.Item key={lang.code}>
+                            {({ active }) => (
+                              <button
+                                onClick={() => changeLanguage(lang.code)}
+                                className={`
+                                  ${active ? 'bg-gray-100' : ''}
+                                  ${i18n.language === lang.code ? 'text-primary' : 'text-gray-700'}
+                                  group flex w-full items-center px-4 py-2 text-sm
+                                `}
+                              >
+                                <span className="mr-2">{lang.flag}</span>
+                                {t(lang.name)}
+                              </button>
+                            )}
+                          </Menu.Item>
+                        ))}
+                      </div>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
               </div>
 
               {/* Mobile menu button */}
@@ -276,7 +333,7 @@ const Navbar = () => {
                             }
                             transition-all duration-300
                           `}>
-                            {item.name}
+                            {t(item.name)}
                           </span>
                           
                           {/* Active indicator dot */}
